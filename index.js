@@ -7,13 +7,8 @@ const crypto = require('crypto');
 const mandrillApi = require('mandrill-api');
 let mandrill = new mandrillApi.Mandrill(process.env.MANDRILL_API_KEY, debug);
 const octokit = require('@octokit/rest')({
-  debug: debug
-});
-
-//authenticate to github
-octokit.authenticate({
-  type: 'oauth',
-  token: process.env.GITHUB_API_TOKEN
+  debug: debug,
+  auth: `token ${process.env.GITHUB_API_TOKEN}`
 });
 
 module.exports = (function(){
@@ -355,7 +350,7 @@ ${syncErrors.length === 0 ? 'None' : syncErrors.join('<br />')}
     getAllFilesFromGithub: async function(path=''){
 
       let files = [];
-      const githubFiles = await octokit.repos.getContent({
+      const githubFiles = await octokit.repos.getContents({
         owner: process.env.GITHUB_OWNER,
         repo: process.env.GITHUB_TEMPLATE_REPO,
         ref: process.env.GITHUB_SYNC_BRANCH,
@@ -397,7 +392,7 @@ ${syncErrors.length === 0 ? 'None' : syncErrors.join('<br />')}
      */
     getFileContentsFromGithub: async function(filename, getRawContents=true){
 
-      return octokit.repos.getContent({
+      return octokit.repos.getContents({
         owner: process.env.GITHUB_OWNER,
         repo: process.env.GITHUB_TEMPLATE_REPO,
         ref: process.env.GITHUB_SYNC_BRANCH,
