@@ -10,13 +10,14 @@
   "author": "ParkingMobility (@benedmunds)",
   "license": "MIT",
   "dependencies": {
-    "@octokit/rest": "^15.2.6",
+    "@octokit/rest": "^16.15.0",
     "async": "^2.6.0",
     "mandrill-api": "^1.0.45"
   },
   "devDependencies": {
     "dotenv": "^5.0.1",
     "mocha": "^5.1.0",
-    "nyc": "^11.8.0"
+    "nyc": "^11.8.0",
+    "node-fetch": "^2.3.0"
   }
 }
