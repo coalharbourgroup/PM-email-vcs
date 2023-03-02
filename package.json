@@ -16,8 +16,8 @@
   },
   "devDependencies": {
     "dotenv": "^5.0.1",
-    "mocha": "^5.1.0",
-    "nyc": "^11.8.0",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
     "node-fetch": "^2.3.0"
   }
 }
